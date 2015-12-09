@@ -20,7 +20,7 @@ def calculate_KL(i):
     qxz = (np.power(2*np.pi,-dimZ/2)*np.exp(np.sum(log_sigma))*np.exp(-0.5*np.dot((z-mu)*(z-mu),np.exp(log_sigma).T)))
     pz=np.power(2*np.pi,-dimZ/2)*np.exp(-0.5*np.sum(np.square(z)))
     pz = np.exp(-0.5*np.sum(np.square(z)))
-    kl = qxz*np.log((1.0+qxz)/(1.0+pz))
+    kl = np.log((0.0000000000000001+qxz)/(0.0000000000000001+pz))
     KL.append(kl)
     h_decoder = np.tanh(np.dot(W4,z) + b4)
     o = 1/(1+np.exp(-np.dot(W5,h_decoder) + b5))
